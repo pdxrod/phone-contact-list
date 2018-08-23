@@ -70,9 +70,18 @@ RSpec.describe ContactsController, type: :feature do
     end
   end
 
-  describe "going to a combination of letters and numbers" do
+  describe "going to a combination of letters and numbers on the search page - this is normally called from AJAX on the index page" do
+    it "should use numbers in search" do
+      visit "/search/9"
+      expect(page).to have_content "Nayani"
+      expect(page).not_to have_content "Alan"
+    end
+
     it "should use letters and numbers in search" do
-      
+      visit "/search/3y"
+      expect(page).to have_content "Nayani"
+      expect(page).to have_content "Jane"
+      expect(page).not_to have_content "Jim"
     end
   end
 
