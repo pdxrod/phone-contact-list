@@ -12,7 +12,8 @@ RSpec.describe ContactsController, type: :feature do
     it "should show the contacts page" do
       visit :contacts
       expect(page).to have_content "Contacts"
+      expect(page).not_to have_content "Fred Bloggs" # until user has started pressing keys
     end
   end
-  
+
 end
