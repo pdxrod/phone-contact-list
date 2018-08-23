@@ -1,25 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 2.4.1 - see https://rvm.io/
 
-Things you may want to cover:
+* Install Rails and other dependencies - `bundle`
 
-* Ruby version
+* Database - `bin/rails db:create && bin/rails db:migrate`
 
-* System dependencies
+* Run the test suite - `rspec`
 
-* Configuration
+* Run the app: `bin/rails server`, then go to http://localhost:3000 in a browser
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # phone-contact-list
