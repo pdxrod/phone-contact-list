@@ -1,13 +1,10 @@
 <a href="/">Contacts</a>
 
-<div id="dbcontacts" class="contacts">
+<div id="divcontacts" class="contacts">
   <br />
   <% @contacts.each do |contact| %>
     <br /><%= contact.name %> <%= contact.number %>
   <% end %>
-</div>
-
-<div id="jscontacts" class="contacts">
 </div>
 
 <div class="textfield">
@@ -34,14 +31,14 @@
       var value = document.getElementById("textfield").value.trim();
       if( value == "" )
       {
-        document.getElementById( "jscontacts" ).innerHTML = "";
+        document.getElementById( "divcontacts" ).innerHTML = "";
       } else
       {
         jQuery.ajax( {
           url : "/search/" + value,
           success : function( result ) {
             var div = contactsExtractor( result );
-            document.getElementById( "jscontacts" ).innerHTML = div;
+            document.getElementById( "divcontacts" ).innerHTML = div;
           }
         });
       }
