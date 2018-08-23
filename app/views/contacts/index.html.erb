@@ -2,9 +2,12 @@
 
 <div class="contacts">
   <% @contacts.each do |contact| %>
-    <br />name: <%= contact.name %><br />
-    number: <%= contact.number %>
+<!--    <br /><%= contact.name %>  <%= contact.number %> -->
   <% end %>
+</div>
+
+<div class="textfield">
+  <%= text_field_tag :textfield %>
 </div>
 
 <div class="keypad">
