@@ -8,7 +8,6 @@
 </div>
 
 <div id="jscontacts" class="contacts">
-
 </div>
 
 <div class="textfield">
@@ -32,13 +31,20 @@
 <script type="text/javascript">
     function textfieldChange()
     {
-      jQuery.ajax( {
-        url : "/search/" + 'a',
-        success : function( result ) {
-          var div = contactsExtractor( result );
-          document.getElementById( "jscontacts" ).innerHTML = div;
-        }
-      } );
+      var value = document.getElementById("textfield").value.trim();
+      if( value == "" )
+      {
+        document.getElementById( "jscontacts" ).innerHTML = "";
+      } else
+      {
+        jQuery.ajax( {
+          url : "/search/" + value,
+          success : function( result ) {
+            var div = contactsExtractor( result );
+            document.getElementById( "jscontacts" ).innerHTML = div;
+          }
+        });
+      }
     }
 
     function contactsExtractor( page )

@@ -37,6 +37,9 @@ class ContactsController < ApplicationController
     def contacts_for_letter( letter )
       contacts = []
       Contact.all.each do |contact|
+
+puts "\ncontacts for letter - including #{contact.name} for letter #{letter}" if contact.name.downcase.include?( letter )
+
         contacts << contact if contact.name.downcase.include?( letter )
       end
       contacts
