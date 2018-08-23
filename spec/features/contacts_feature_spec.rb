@@ -70,4 +70,10 @@ RSpec.describe ContactsController, type: :feature do
     end
   end
 
+  describe "going to a combination of letters and numbers" do
+    it "should use letters and numbers in search" do
+      
+    end
+  end
+
 end

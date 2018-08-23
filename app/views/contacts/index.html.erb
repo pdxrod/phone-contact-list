@@ -1,14 +1,18 @@
 <a href="/">Contacts</a>
 
-<div class="contacts">
+<div id="dbcontacts" class="contacts">
   <br />
   <% @contacts.each do |contact| %>
     <br /><%= contact.name %> <%= contact.number %>
   <% end %>
 </div>
 
+<div id="jscontacts" class="contacts">
+
+</div>
+
 <div class="textfield">
-  <%= text_field_tag :textfield %>
+  <%= text_field_tag :textfield, "", onkeyup: "textfieldChange()" %>
 </div>
 
 <div class="keypad">
@@ -24,3 +28,26 @@
     </table>
   </code>
 </div>
+
+<script type="text/javascript">
+    function textfieldChange()
+    {
+      jQuery.ajax( {
+        url : "/search/" + 'a',
+        success : function( result ) {
+          var div = contactsExtractor( result );
+          document.getElementById( "jscontacts" ).innerHTML = div;
+        }
+      } );
+    }
+
+    function contactsExtractor( page )
+    {
+        var starting = page.indexOf( "<div id=\"jscontacts\">" );
+        var ending = page.length - 1;
+        var div = page.substring( starting, ending );
+        ending = div.indexOf( "</div>" ) + 6;
+        div = div.substring( 0, ending );
+        return div;
+    }
+</script>

@@ -8,10 +8,18 @@ class ContactsController < ApplicationController
     end
   end
 
+  def search
+    @contacts = Contact.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @contacts }
+    end
+  end
+
   private
     LETTERS = ["~", "~", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
     def contacts_for_number( number )
-      return [] if number.nil? 
+      return [] if number.nil?
       letters = LETTERS[ number ]
       contacts = []
       Contact.all.each do |contact|

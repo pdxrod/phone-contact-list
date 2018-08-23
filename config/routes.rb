@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '*' => 'contacts#index'
   get '0' => 'contacts#index'
   get '#' => 'contacts#index'
+  get 'search' => 'contacts#search'
+  get 'search/:string' => 'contacts#search'
 end
