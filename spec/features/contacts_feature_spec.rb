@@ -32,10 +32,15 @@ RSpec.describe ContactsController, type: :feature do
   end
 
   describe "going to a number" do
+
+    it "should be case-insensitive" do
+      visit "/2"
+      expect(page).to have_content "Ashok"
+    end
+
     it "should show contacts with a in their names if you hit 2" do
       visit "/2"
       expect(page).to have_content "Alan"
-      expect(page).to have_content "Ashok"
       expect(page).to have_content "Nayani"
       expect(page).to have_content "Jane"
       expect(page).not_to have_content "Jim"
