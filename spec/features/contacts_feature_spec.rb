@@ -60,6 +60,15 @@ RSpec.describe ContactsController, type: :feature do
       expect(page).not_to have_content "Jane"
     end
 
+    it "should only show Jim 11 if you hit 11" do
+      visit "/11"
+      expect(page).to have_content "Jim"
+      expect(page).not_to have_content "Alan"
+      expect(page).not_to have_content "Ashok"
+      expect(page).not_to have_content "Nayani"
+      expect(page).not_to have_content "Jane"
+    end
+
     it "should only show Nayani 33 if you hit 9" do
       visit "/9"
       expect(page).to have_content "Nayani"
