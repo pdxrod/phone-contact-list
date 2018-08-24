@@ -15,7 +15,6 @@ class Contact < ApplicationRecord
 
   private
 # Given 23, it would find all names containing any of ad ae af bd be bf cd ce cf
-# Given Jim11, it would not find anything, even if there is a Jim 11 in the database
     def self.all_possible_matches_from_phone_numbers( some_letters, some_contacts )
       numbers = some_letters.to_s.split ''
       numbers.each do |number|
