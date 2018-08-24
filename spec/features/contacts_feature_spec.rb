@@ -23,11 +23,11 @@ RSpec.describe ContactsController, type: :feature do
     it "should show the contacts page" do
       visit :contacts
       expect(page).to have_content "Contacts"
-      expect(page).not_to have_content "Alan" # until user has started pressing keys
+      expect(page).not_to have_content "Alan" # until user has started pressing keys or typing
     end
   end
 
-  describe "a combination of letters and numbers on the search page - this is normally called from AJAX on the index page" do
+  describe "a combination of letters and numbers on the search page - this is called from AJAX on the index page:" do
 
     it "should be case-insensitive" do
       visit "/search/2"

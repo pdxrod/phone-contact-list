@@ -23,30 +23,17 @@ class Contact < ApplicationRecord
       contacts = []
       letter_groups = []
       numbers.each do |number|
-        letter_groups << LETTERS[ number.to_i ] # [abc def]
+        letter_groups << LETTERS[ number.to_i ] # [abc def pqrs]
       end
       letter_arrays = []
       letter_groups.each do |letter_group|
         letters = letter_group.split '' # [a, b, c]
-        letter_arrays << letters        # [ [a, b, c], [d, e, f] ]
+        letter_arrays << letters        # [ [a, b, c], [d, e, f], [p, q, r, s] ]
+      end                               # Thanks again, stackoverflow
+      letter_arrays.first.product(*letter_arrays[1..-1]).map(&:join).each do |str|
+        contacts.concat some_contacts.select {|contact| contact.name.downcase.include? str}
       end
-      letter_arrays.size.times do |i|
-        letter_arrays.size.times do |j|
-          unless i == j
-            one = letter_arrays[ i ]
-            two = letter_arrays[ j ]
-            one.size.times do |k|
-              two.size.times do |l|
-                first = one[ k ]
-                second = two[ l ]
-                string = first + second
-                contacts.concat some_contacts.select {|contact| contact.name.downcase.include? string}
-              end
-            end
-          end
-        end
-        return contacts
-      end
+      return contacts
     end
 
 end
