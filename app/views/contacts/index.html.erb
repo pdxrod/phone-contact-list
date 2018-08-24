@@ -19,16 +19,19 @@
   <code>
     <table>
 
-      <tr><td><a href="/1">1</a> --- &nbsp;<a href="/2">2</a> abc <a href="/3">3</a> def</td></tr>
-      <tr><td><a href="/4">4</a> ghi &nbsp;<a href="/5">5</a> jkl <a href="/6">6</a> mno</td></tr>
-      <tr><td><a href="/7">7</a> pqrs <a href="/8">8</a> tuv <a href="/9">9</a> wxyz</td></tr>
-      <tr><td><a href="/*">*</a> --- &nbsp;<a href="/0">0</a> + &nbsp;&nbsp;<a href="/#">#</a> &nbsp;</td></tr>
+      <tr><td><button id="1">1</button>    </td><td> <button id="2">2</button>abc</td><td> <button id="3">3</button>def </td></tr>
+      <tr><td><button id="4">4</button>ghi </td><td> <button id="5">5</button>jkl</td><td> <button id="6">6</button>mno </td></tr>
+      <tr><td><button id="7">7</button>pqrs</td><td> <button id="8">8</button>tuv</td><td> <button id="9">9</button>wxyz</td></tr>
+      <tr><td><button>*</button></td><td>            <button id="0">0</button></td><td>    <button>#</button>           </td></tr>
 
     </table>
   </code>
 </div>
 
 <script type="text/javascript">
+    $( "#9" ).on( "click", function() {
+        console.log("#");
+    });
 
     $( "#delete_button" ).on( "click", function() {
        var value = document.getElementById("textfield").value.trim();
