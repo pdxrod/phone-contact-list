@@ -68,6 +68,15 @@ RSpec.describe ContactsController, type: :feature do
       expect(page).not_to have_content "Jane"
       expect(page).not_to have_content "Jim"
     end
+
+    it "should only show Nayani 33 if you hit 629" do
+      visit "/629"
+      expect(page).to have_content "Nayani"
+      expect(page).not_to have_content "Alan"
+      expect(page).not_to have_content "Ashok"
+      expect(page).not_to have_content "Jane"
+      expect(page).not_to have_content "Jim"
+    end
   end
 
   describe "a combination of letters and numbers on the search page - this is normally called from AJAX on the index page" do

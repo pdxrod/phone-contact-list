@@ -1,14 +1,17 @@
 <a href="/">Contacts</a>
 
 <div id="divcontacts" class="contacts">
-  <br />
-  <% @contacts.each do |contact| %>
-    <br /><%= contact.name %> <%= contact.number %>
-  <% end %>
+  <div id="jscontacts" class="contacts">
+    <br />
+    <% @contacts.each do |contact| %>
+      <br /><%= contact.name %> <%= contact.number %>
+    <% end %>
+  </div>
 </div>
 
 <div class="textfield">
   <%= text_field_tag :textfield, "", onkeyup: "textfieldChange()" %>
+  <button id="delete_button"><<</button>
 </div>
 
 <div class="keypad">
@@ -26,6 +29,16 @@
 </div>
 
 <script type="text/javascript">
+
+    $( "#delete_button" ).on( "click", function() {
+       var value = document.getElementById("textfield").value.trim();
+       if( value.length > 0 ) {
+         value = value.substring( 0, value.length - 1 )
+       }
+       document.getElementById("textfield").value = value;
+       textfieldChange();
+    } );
+
     function textfieldChange()
     {
       var value = document.getElementById("textfield").value.trim();
