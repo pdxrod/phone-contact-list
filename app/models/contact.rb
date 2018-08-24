@@ -23,7 +23,7 @@ class Contact < ApplicationRecord
       contacts = []
       letter_groups = []
       numbers.each do |number|
-        letter_groups << LETTERS[ number.to_i ] # [abc def pqrs]
+        letter_groups << LETTERS[ number.to_i ] # [abc, def, pqrs]
       end
       letter_arrays = []
       letter_groups.each do |letter_group|
