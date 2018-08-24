@@ -29,11 +29,21 @@
 </div>
 
 <script type="text/javascript">
-    $( "#9" ).on( "click", function() {
-        console.log("#");
+  // Thanks https://jsfiddle.net/u1q6obLz/
+    $("button, input[type=button]").on( "click", function()
+    {
+      var label = $(this).text();
+      if( label != "*" && label != "#" && label != "<<" )
+      {
+        var value = document.getElementById("textfield").value.trim();
+        value += label;
+        document.getElementById("textfield").value = value;
+        textfieldChange();
+      }
     });
 
-    $( "#delete_button" ).on( "click", function() {
+    $( "#delete_button" ).on( "click", function()
+    {
        var value = document.getElementById("textfield").value.trim();
        if( value.length > 0 ) {
          value = value.substring( 0, value.length - 1 )
