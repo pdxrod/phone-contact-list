@@ -70,7 +70,7 @@ RSpec.describe ContactsController, type: :feature do
     end
 
     it "should only show Nayani 33 if you hit 629" do
-      visit "/629"
+      visit "/search/629"
       expect(page).to have_content "Nayani"
       expect(page).not_to have_content "Alan"
       expect(page).not_to have_content "Ashok"
